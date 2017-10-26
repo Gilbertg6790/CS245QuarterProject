@@ -1,18 +1,15 @@
 /** *************************************************************
- * file: MainMenuFrame.java
+ * file: SudokuEngine.java
  * author: Albert Gil, Cody Nguyen, Ynebin Yin, Matt Musquiz
  * class: CS 245 - Programming Graphical User Interfaces
  *
  * assignment: Hangman V1.2
- * date last modified: 10/22/17
+ * date last modified: 10/26/17
  *
- * purpose: This class is to contain the word that needs to be guess,
- * the letters that have been revealed, and the remaining guesses. This
- * class does not deal with user input and calls other classes to handle
- * user input.
+ * purpose: This class contains the working engine for the sudoku game
  *
  *************************************************************** */
-package main;
+package Main;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +20,6 @@ public class SudokuEngine {
     private final int GRID_SIZE;
     
     public SudokuEngine(){
-
         GRID_SIZE = 9;
     }
     
@@ -109,6 +105,7 @@ public class SudokuEngine {
         }
         return true;
     }
+    
     private boolean validate(ArrayList<Integer> check){
         int i = 0;
         Collections.sort(check);
@@ -117,6 +114,7 @@ public class SudokuEngine {
         }
         return true;
     }
+    
     protected void gameLoop(){
         
     }

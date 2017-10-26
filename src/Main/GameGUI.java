@@ -17,7 +17,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
 public class GameGUI extends javax.swing.JFrame {
@@ -30,11 +33,22 @@ public class GameGUI extends javax.swing.JFrame {
     int numberOfLetters = 0;
 
     public GameGUI() {
+        escapeListener();
         initComponents();
         showDateAndTime();
         setAnswersOnLabels();
     }
 
+    public final void escapeListener() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+    }
     //Method: goback
     //purpose: this method brings the user back the main menu.
     public void goback() {

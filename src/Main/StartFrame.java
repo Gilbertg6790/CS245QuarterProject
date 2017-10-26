@@ -11,19 +11,36 @@
  *************************************************************** */
 package Main;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 
 public class StartFrame extends javax.swing.JFrame {
 
     public StartFrame() {
+        escapeListener();
         initComponents();
     }
 
     public void run() throws IOException {
         new MainMenuFrame().setVisible(true);
+    }
+    
+     public final void escapeListener() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
     public void stall() {
@@ -69,13 +86,18 @@ public class StartFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) throws IOException {
-        StartFrame Main = new StartFrame();
-        Main.setVisible(true);
-        Main.stall();
-        Main.dispose();
-        Main.run();
+        new SudokuGUI().setVisible(true);  
+        //Commented out so it can start straight to sudoku for debugging
+//        StartFrame Main = new StartFrame();
+//        Main.setVisible(true);
+//        Main.stall();
+//        Main.dispose();
+//        
+//        Main.run();
 
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BackGround;
