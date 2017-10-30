@@ -18,9 +18,144 @@ public class SudokuEngine {
     
     private ArrayList<ArrayList<Integer>> grid;
     private final int GRID_SIZE;
+    //will contain the answers
+    private int answers[][] = new int[9][9];
+    //will contain if the user guess a tile wrong.
+    private boolean guessedWrong[][] = new boolean [9][9];
+    //the total amount of points the user can gain.
+    private int sudokuPoints = 540;
     
     public SudokuEngine(){
         GRID_SIZE = 9;
+        fillAnswers();
+        for (int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                guessedWrong[i][j] = false;
+            }
+        }
+    }
+    
+    //method: checkAnswer
+    //purpose: checks the passed in answer with the answers grid. If it is wrong
+    //it checks if the points have been deducted for that answer already. If
+    //the answer is wrong and points haven't been deducted, it deducts 10 points
+    //and set guessedWrong[x][y] to true to prevent further deductions.
+    //Returns true for a correct answer and false for an incorrect answer.
+    //Note: currently don't know if having it return anything is useful yet, I
+    //included it just in case.
+    public boolean checkAnswer(int guess, int x, int y){
+        if(guess == answers[x][y]){
+            return true;
+        } else {
+            if (guessedWrong[x][y]){
+                return false;
+            } else {
+                sudokuPoints -= 10;
+                guessedWrong[x][y] = true;
+                return false;
+            }
+
+        }
+        
+    }
+    
+    public int getScore()
+    {
+        return sudokuPoints;
+    }
+    
+    //method: fillAnswers
+    //purpose: populates the answer table to enable checking.
+    public void fillAnswers(){
+        answers[0][0] = 8;
+        answers[0][1] = 3;
+        answers[0][2] = 5;
+        answers[0][3] = 4;
+        answers[0][4] = 1;
+        answers[0][5] = 6;
+        answers[0][6] = 9;
+        answers[0][7] = 2;
+        answers[0][8] = 7;
+        
+        answers[1][0] = 2;
+        answers[1][1] = 9;
+        answers[1][2] = 6;
+        answers[1][3] = 8;
+        answers[1][4] = 5;
+        answers[1][5] = 7;
+        answers[1][6] = 4;
+        answers[1][7] = 3;
+        answers[1][8] = 1;
+        
+        answers[2][0] = 4;
+        answers[2][1] = 1;
+        answers[2][2] = 7;
+        answers[2][3] = 2;
+        answers[2][4] = 9;
+        answers[2][5] = 3;
+        answers[2][6] = 6;
+        answers[2][7] = 5;
+        answers[2][8] = 8;
+        
+        answers[3][0] = 5;
+        answers[3][1] = 6;
+        answers[3][2] = 9;
+        answers[3][3] = 1;
+        answers[3][4] = 3;
+        answers[3][5] = 4;
+        answers[3][6] = 7;
+        answers[3][7] = 8;
+        answers[3][8] = 2;
+        
+        answers[4][0] = 1;
+        answers[4][1] = 2;
+        answers[4][2] = 3;
+        answers[4][3] = 6;
+        answers[4][4] = 7;
+        answers[4][5] = 8;
+        answers[4][6] = 5;
+        answers[4][7] = 4;
+        answers[4][8] = 9;
+        
+        answers[5][0] = 7;
+        answers[5][1] = 4;
+        answers[5][2] = 8;
+        answers[5][3] = 5;
+        answers[5][4] = 2;
+        answers[5][5] = 9;
+        answers[5][6] = 1;
+        answers[5][7] = 6;
+        answers[5][8] = 3;
+        
+        answers[6][0] = 6;
+        answers[6][1] = 5;
+        answers[6][2] = 2;
+        answers[6][3] = 7;
+        answers[6][4] = 8;
+        answers[6][5] = 1;
+        answers[6][6] = 3;
+        answers[6][7] = 9;
+        answers[6][8] = 4;
+        
+        answers[7][0] = 9;
+        answers[7][1] = 8;
+        answers[7][2] = 1;
+        answers[7][3] = 3;
+        answers[7][4] = 4;
+        answers[7][5] = 5;
+        answers[7][6] = 2;
+        answers[7][7] = 7;
+        answers[7][8] = 6;
+        
+        answers[8][0] = 3;
+        answers[8][1] = 7;
+        answers[8][2] = 4;
+        answers[8][3] = 9;
+        answers[8][4] = 6;
+        answers[8][5] = 2;
+        answers[8][6] = 8;
+        answers[8][7] = 1;
+        answers[8][8] = 5;
     }
     
     protected void initGame(){
@@ -34,6 +169,8 @@ public class SudokuEngine {
         addNumbers();
         System.out.println(gridToString());
     }
+    
+    
     private void addNumbers(){
 	grid.get(0).set(0, 8);
         grid.get(0).set(3, 4);
@@ -118,5 +255,6 @@ public class SudokuEngine {
     protected void gameLoop(){
         
     }
+    
     
 }

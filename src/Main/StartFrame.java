@@ -87,13 +87,12 @@ public class StartFrame extends javax.swing.JFrame {
 
     public static void main(String args[]) throws IOException {
         new SudokuGUI().setVisible(true);  
-        //Commented out so it can start straight to sudoku for debugging
-//        StartFrame Main = new StartFrame();
-//        Main.setVisible(true);
-//        Main.stall();
-//        Main.dispose();
-//        
-//        Main.run();
+        //StartFrame Main = new StartFrame();
+        //Main.setVisible(true);
+        //Main.stall();
+        //Main.dispose();
+        
+        //Main.run();
 
     }
     
