@@ -23,7 +23,8 @@ import javax.swing.KeyStroke;
 
 public class SudokuGUI extends javax.swing.JFrame {
 
-    SudokuEngine se;
+    SudokuEngine se = new SudokuEngine();
+    
     
     public SudokuGUI() {
         escapeListener();
@@ -1568,6 +1569,11 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         jToggleButton2.setText("Submit");
         getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Wide Latin", 0, 16)); // NOI18N
         jLabel1.setText("Sudoku");
@@ -1578,7 +1584,7 @@ public class SudokuGUI extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void r6_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
+        
     }                                    
 
     private void r4_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
@@ -1862,9 +1868,547 @@ public class SudokuGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                    
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
-
-    }                                              
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                               
+        System.exit(0);
+    }
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) 
+    {           
+        
+        int[][] tempArray = new int[9][9];
+        
+        //row 1
+        try{
+        tempArray[0][0] = Integer.parseInt(r1_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][0] = 0;
+        }
+        try{
+        tempArray[0][1] = Integer.parseInt(r1_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][1] = 0;
+        }try{
+        tempArray[0][2] = Integer.parseInt(r1_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][2] = 0;
+        }try{
+        tempArray[0][3] = Integer.parseInt(r1_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][3] = 0;
+        }try{
+        tempArray[0][4] = Integer.parseInt(r1_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][4] = 0;
+        }try{
+        tempArray[0][5] = Integer.parseInt(r1_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][5] = 0;
+        }try{
+        tempArray[0][6] = Integer.parseInt(r1_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][6] = 0;
+        }try{
+        tempArray[0][7] = Integer.parseInt(r1_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][7] = 0;
+        }try{
+        tempArray[0][8] = Integer.parseInt(r1_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[0][8] = 0;
+        }
+        
+        //row 2
+        try{
+        tempArray[1][0] = Integer.parseInt(r2_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][0] = 0;
+        }
+        try{
+        tempArray[1][1] = Integer.parseInt(r2_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][1] = 0;
+        }try{
+        tempArray[1][2] = Integer.parseInt(r2_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][2] = 0;
+        }try{
+        tempArray[1][3] = Integer.parseInt(r2_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][3] = 0;
+        }try{
+        tempArray[1][4] = Integer.parseInt(r2_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][4] = 0;
+        }try{
+        tempArray[1][5] = Integer.parseInt(r2_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][5] = 0;
+        }try{
+        tempArray[1][6] = Integer.parseInt(r2_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][6] = 0;
+        }try{
+        tempArray[1][7] = Integer.parseInt(r2_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][7] = 0;
+        }try{
+        tempArray[1][8] = Integer.parseInt(r2_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[1][8] = 0;
+        }
+        
+        //row 3
+        try{
+        tempArray[2][0] = Integer.parseInt(r3_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][0] = 0;
+        }
+        try{
+        tempArray[2][1] = Integer.parseInt(r3_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][1] = 0;
+        }try{
+        tempArray[2][2] = Integer.parseInt(r3_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][2] = 0;
+        }try{
+        tempArray[2][3] = Integer.parseInt(r3_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][3] = 0;
+        }try{
+        tempArray[2][4] = Integer.parseInt(r3_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][4] = 0;
+        }try{
+        tempArray[2][5] = Integer.parseInt(r3_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][5] = 0;
+        }try{
+        tempArray[2][6] = Integer.parseInt(r3_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][6] = 0;
+        }try{
+        tempArray[2][7] = Integer.parseInt(r3_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][7] = 0;
+        }try{
+        tempArray[2][8] = Integer.parseInt(r3_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[2][8] = 0;
+        }
+        
+        //row 4
+        try{
+        tempArray[3][0] = Integer.parseInt(r4_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][0] = 0;
+        }
+        try{
+        tempArray[3][1] = Integer.parseInt(r4_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][1] = 0;
+        }try{
+        tempArray[3][2] = Integer.parseInt(r4_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][2] = 0;
+        }try{
+        tempArray[3][3] = Integer.parseInt(r4_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][3] = 0;
+        }try{
+        tempArray[3][4] = Integer.parseInt(r4_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][4] = 0;
+        }try{
+        tempArray[3][5] = Integer.parseInt(r4_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][5] = 0;
+        }try{
+        tempArray[3][6] = Integer.parseInt(r4_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][6] = 0;
+        }try{
+        tempArray[3][7] = Integer.parseInt(r4_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][7] = 0;
+        }try{
+        tempArray[3][8] = Integer.parseInt(r4_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[3][8] = 0;
+        }
+        
+        //row 5
+        try{
+        tempArray[4][0] = Integer.parseInt(r5_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][0] = 0;
+        }
+        try{
+        tempArray[4][1] = Integer.parseInt(r5_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][1] = 0;
+        }try{
+        tempArray[4][2] = Integer.parseInt(r5_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][2] = 0;
+        }try{
+        tempArray[4][3] = Integer.parseInt(r5_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][3] = 0;
+        }try{
+        tempArray[4][4] = Integer.parseInt(r5_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][4] = 0;
+        }try{
+        tempArray[4][5] = Integer.parseInt(r5_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][5] = 0;
+        }try{
+        tempArray[4][6] = Integer.parseInt(r5_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][6] = 0;
+        }try{
+        tempArray[4][7] = Integer.parseInt(r5_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][7] = 0;
+        }try{
+        tempArray[4][8] = Integer.parseInt(r5_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[4][8] = 0;
+        }
+        
+        //row 6
+        try{
+        tempArray[5][0] = Integer.parseInt(r6_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][0] = 0;
+        }
+        try{
+        tempArray[5][1] = Integer.parseInt(r6_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][1] = 0;
+        }try{
+        tempArray[5][2] = Integer.parseInt(r6_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][2] = 0;
+        }try{
+        tempArray[5][3] = Integer.parseInt(r6_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][3] = 0;
+        }try{
+        tempArray[5][4] = Integer.parseInt(r6_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][4] = 0;
+        }try{
+        tempArray[5][5] = Integer.parseInt(r6_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][5] = 0;
+        }try{
+        tempArray[5][6] = Integer.parseInt(r6_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][6] = 0;
+        }try{
+        tempArray[5][7] = Integer.parseInt(r6_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][7] = 0;
+        }try{
+        tempArray[5][8] = Integer.parseInt(r6_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[5][8] = 0;
+        }
+        
+        //row 7
+        try{
+        tempArray[6][0] = Integer.parseInt(r7_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][0] = 0;
+        }
+        try{
+        tempArray[6][1] = Integer.parseInt(r7_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][1] = 0;
+        }try{
+        tempArray[6][2] = Integer.parseInt(r7_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][2] = 0;
+        }try{
+        tempArray[6][3] = Integer.parseInt(r7_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][3] = 0;
+        }try{
+        tempArray[6][4] = Integer.parseInt(r7_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][4] = 0;
+        }try{
+        tempArray[6][5] = Integer.parseInt(r7_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][5] = 0;
+        }try{
+        tempArray[6][6] = Integer.parseInt(r7_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][6] = 0;
+        }try{
+        tempArray[6][7] = Integer.parseInt(r7_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][7] = 0;
+        }try{
+        tempArray[6][8] = Integer.parseInt(r7_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[6][8] = 0;
+        }
+        
+        //row 8
+        try{
+        tempArray[7][0] = Integer.parseInt(r8_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][0] = 0;
+        }
+        try{
+        tempArray[7][1] = Integer.parseInt(r8_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][1] = 0;
+        }try{
+        tempArray[7][2] = Integer.parseInt(r8_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][2] = 0;
+        }try{
+        tempArray[7][3] = Integer.parseInt(r8_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][3] = 0;
+        }try{
+        tempArray[7][4] = Integer.parseInt(r8_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][4] = 0;
+        }try{
+        tempArray[7][5] = Integer.parseInt(r8_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][5] = 0;
+        }try{
+        tempArray[7][6] = Integer.parseInt(r8_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][6] = 0;
+        }try{
+        tempArray[7][7] = Integer.parseInt(r8_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][7] = 0;
+        }try{
+        tempArray[7][8] = Integer.parseInt(r8_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[7][8] = 0;
+        }
+        
+        //row 9
+        try{
+        tempArray[8][0] = Integer.parseInt(r9_1.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][0] = 0;
+        }
+        try{
+        tempArray[8][1] = Integer.parseInt(r9_2.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][1] = 0;
+        }try{
+        tempArray[8][2] = Integer.parseInt(r9_3.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][2] = 0;
+        }try{
+        tempArray[8][3] = Integer.parseInt(r9_4.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][3] = 0;
+        }try{
+        tempArray[8][4] = Integer.parseInt(r9_5.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][4] = 0;
+        }try{
+        tempArray[8][5] = Integer.parseInt(r9_6.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][5] = 0;
+        }try{
+        tempArray[8][6] = Integer.parseInt(r9_7.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][6] = 0;
+        }try{
+        tempArray[8][7] = Integer.parseInt(r9_8.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][7] = 0;
+        }try{
+        tempArray[8][8] = Integer.parseInt(r9_9.getText());
+        }
+        catch(Exception e)
+        {
+            tempArray[8][8] = 0;
+        }
+        
+        for (int a = 0; a < 9; a++)
+        {
+            for (int b = 0; b < 9; b++)
+            {
+                se.checkAnswer(tempArray[a][b],a,b);
+                
+            }
+        }
+        System.out.print(se.getScore());
+    }  
 
     private void r1_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
         // TODO add your handling code here:
@@ -2546,8 +3090,8 @@ public class SudokuGUI extends javax.swing.JFrame {
     }                             
 
     private void r6_5KeyTyped(java.awt.event.KeyEvent evt) {                              
-        r6_3.setText("2");              
-        r6_3.setEditable(false);
+        r6_5.setText("2");              
+        r6_5.setEditable(false);
     }                             
 
     private void r6_7KeyTyped(java.awt.event.KeyEvent evt) {                              
