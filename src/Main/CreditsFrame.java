@@ -1,40 +1,29 @@
 /***************************************************************
-* File: CreditsFrame.java
-* Author: Albert Gil, Cody Nguyen, Ynebin Yin, Matt Musquiz
-* Class: CS 245 - Programming Graphical User Interfaces
+* file: CreditsFrame.java
+* author: Albert Gil, Cody Nguyen, Ynebin Yin, Matt Musquiz
+* class: CS 245 - Programming Graphical User Interfaces
 *
-* Assignment: Hangman V1.0
-* Date last modified: 10/3/17
+* assignment: Hangman V1.0
+* date last modified: 10/3/17
 *
-* Purpose: This class creates a credit frame that displays everybody's name who
+* purpose: This class creates a credit frame that displays everybody's name who
 * worked on this project.
 *
 ****************************************************************/ 
 package Main;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import javax.swing.AbstractAction;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
-
 public class CreditsFrame extends javax.swing.JFrame {
-   
+
     public CreditsFrame() {
-        escapeListener();
         initComponents();
     }
     
-    public final void escapeListener() {
-        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel");
-        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+    public void backButton(){ 
+        //System.out.println("is this working?");
+        dispose();
+        new MainMenuFrame().setVisible(true);
     }
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,7 +46,7 @@ public class CreditsFrame extends javax.swing.JFrame {
         name1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         name1.setIconTextGap(0);
         getContentPane().add(name1);
-        name1.setBounds(270, 150, 80, 16);
+        name1.setBounds(270, 150, 56, 16);
 
         creditText.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         creditText.setLabelFor(creditText);
@@ -73,7 +62,7 @@ public class CreditsFrame extends javax.swing.JFrame {
         name2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         name2.setIconTextGap(0);
         getContentPane().add(name2);
-        name2.setBounds(260, 210, 100, 16);
+        name2.setBounds(270, 210, 59, 16);
 
         name3.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         name3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -82,7 +71,7 @@ public class CreditsFrame extends javax.swing.JFrame {
         name3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         name3.setIconTextGap(0);
         getContentPane().add(name3);
-        name3.setBounds(270, 190, 100, 16);
+        name3.setBounds(270, 190, 76, 16);
 
         name4.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         name4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -91,7 +80,7 @@ public class CreditsFrame extends javax.swing.JFrame {
         name4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         name4.setIconTextGap(0);
         getContentPane().add(name4);
-        name4.setBounds(270, 170, 100, 16);
+        name4.setBounds(270, 170, 77, 16);
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,12 +95,15 @@ public class CreditsFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    //Method: backButtonActionPerformed
-    //purpose: brings use back to main menu and closes credits frame
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        dispose();
-        new MainMenuFrame().setVisible(true);
+ 
+       backButton();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    
+    public static void main(String args[]) {
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
@@ -121,5 +113,4 @@ public class CreditsFrame extends javax.swing.JFrame {
     private javax.swing.JLabel name3;
     private javax.swing.JLabel name4;
     // End of variables declaration//GEN-END:variables
-
 }
