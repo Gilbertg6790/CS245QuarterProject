@@ -1,44 +1,66 @@
 /***************************************************************
-* file: MainMenuFrame.java
-* author: Albert Gil, Cody Nguyen, Ynebin Yin, Matt Musquiz
-* class: CS 245 - Programming Graphical User Interfaces
+* File: MainMenuFrame.java
+* Author: Albert Gil, Cody Nguyen, Ynebin Yin, Matt Musquiz
+* Class: CS 245 - Programming Graphical User Interfaces
 *
-* assignment: Hangman V1.0
-* date last modified: 10/3/17
+* Assignment: Hangman V1.0
+* Date last modified: 10/3/17
 *
-* purpose: This class creates the Main Menu Frame that allows the user to click
+* Purpose: This class creates the Main Menu Frame that allows the user to click
 * play, high score, or credits.
 *
 ****************************************************************/ 
 package Main;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+
 
 public class MainMenuFrame extends javax.swing.JFrame {
     
-    public MainMenuFrame() { 
-        
+    /**
+     *
+     */
+    public MainMenuFrame() {
         initComponents();
+        escapeListener();
     }
     
+    
+     public final void escapeListener() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+    }
     public void creditsButtonPress(){
        dispose();
        new CreditsFrame().setVisible(true);
     }
     
-    public void highScoreButtonPress(){
+    
+    public void highScoreButtonPress() throws IOException{
        dispose();
        new HighScoreFrame().setVisible(true);
     }
     
-    public void gameFrameButtonPress(){
+    /**
+     *
+     */
+    public void gameFrameButtonPress(){ 
        dispose();
-       new test().setVisible(true);
+       new GameGUI().setVisible(true);
     }
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,7 +116,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(280, 70, 280, 70);
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Main/MainMenu.jpg"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/MainMenu.jpg"))); // NOI18N
         Background.setText("Background");
         getContentPane().add(Background);
         Background.setBounds(-30, 0, 770, 410);
@@ -113,13 +135,15 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
 
     private void highscoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_highscoreButtonActionPerformed
-        highScoreButtonPress();// TODO add your handling cod here:
+        try {
+            highScoreButtonPress();
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_highscoreButtonActionPerformed
 
-    public static void main(String args[]) {
-        
-    }
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JButton creditsButton;
