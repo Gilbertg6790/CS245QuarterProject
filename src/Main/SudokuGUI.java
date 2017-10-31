@@ -32,8 +32,8 @@ public class SudokuGUI extends javax.swing.JFrame {
     public SudokuGUI() {
         score = 0;
         hiScoreRecords.loadScoreFromFile();
-
-        escapeListener();
+        f1Listener();
+        //escapeListener();
         initComponents();
         
     }
@@ -41,9 +41,19 @@ public class SudokuGUI extends javax.swing.JFrame {
     public SudokuGUI(int prevScore) {
         score = prevScore;
         hiScoreRecords.loadScoreFromFile();
-        escapeListener();
+        f1Listener();
+        //escapeListener();
         initComponents();
         
+    }
+    public final void f1Listener() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                new TeamInfoFrame().setVisible(true);
+            }
+        });
     }
     
     public final void escapeListener() {

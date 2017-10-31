@@ -21,7 +21,6 @@ import javax.swing.KeyStroke;
 public class CreditsFrame extends javax.swing.JFrame {
    
     public CreditsFrame() {
-        escapeListener();
         initComponents();
     }
     
@@ -32,6 +31,15 @@ public class CreditsFrame extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
+            }
+        });
+    }
+    public final void f1Listener() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                new TeamInfoFrame().setVisible(true);
             }
         });
     }

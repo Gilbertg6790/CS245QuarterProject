@@ -24,6 +24,7 @@ public final class HighScoreFrame extends javax.swing.JFrame {
 
     public HighScoreFrame() throws IOException {
         escapeListener();
+        f1Listener();
         initComponents();
         hiScoreRecords.loadScoreFromFile();
         
@@ -39,6 +40,16 @@ public final class HighScoreFrame extends javax.swing.JFrame {
             }
         });
     }
+     public final void f1Listener() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                new TeamInfoFrame().setVisible(true);
+            }
+        });
+    }
+    
 
     public void setHighScoresOnJlabels() throws IOException {
         hiScoreRecords.SorterAndRewrite();

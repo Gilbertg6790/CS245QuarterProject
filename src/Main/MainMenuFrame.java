@@ -28,10 +28,23 @@ public class MainMenuFrame extends javax.swing.JFrame {
      *
      */
     public MainMenuFrame() {
+        
         initComponents();
-        escapeListener();
+        f1Listener();
+        //escapeListener();
     }
     
+    //Method: f1Listener
+    //purpose: this method is used to close the program whenever 'ESC' is pressed.
+    public final void f1Listener() {
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0), "Cancel");
+        getRootPane().getActionMap().put("Cancel", new AbstractAction() {
+            public void actionPerformed(ActionEvent e) {
+                new TeamInfoFrame().setVisible(true);
+            }
+        });
+    }
     
      public final void escapeListener() {
         getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
@@ -43,6 +56,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
             }
         });
     }
+     
+    
     public void creditsButtonPress(){
        dispose();
        new CreditsFrame().setVisible(true);
