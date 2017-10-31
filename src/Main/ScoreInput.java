@@ -56,6 +56,7 @@ private final HighScoreEngine hiScoreRecords = new HighScoreEngine("0", 0);
 
         initialsJTextField.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         initialsJTextField.setText("AAA");
+        initialsJTextField.setToolTipText("Input Initials");
         initialsJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 initialsJTextFieldActionPerformed(evt);
@@ -72,6 +73,7 @@ private final HighScoreEngine hiScoreRecords = new HighScoreEngine("0", 0);
 
         saveButton.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         saveButton.setText("Save!");
+        saveButton.setToolTipText("Saves the Highscore");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -92,6 +94,7 @@ private final HighScoreEngine hiScoreRecords = new HighScoreEngine("0", 0);
 
         mainMenuButton.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         mainMenuButton.setText("Main Menu");
+        mainMenuButton.setToolTipText("Return to Main Menu");
         mainMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainMenuButtonActionPerformed(evt);
@@ -120,7 +123,6 @@ private final HighScoreEngine hiScoreRecords = new HighScoreEngine("0", 0);
                     .addContainerGap()
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
                             .addComponent(scoreNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(scoreNumLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

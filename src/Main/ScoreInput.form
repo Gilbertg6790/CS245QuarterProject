@@ -115,6 +115,7 @@
               <Font name="Tw Cen MT" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="AAA"/>
+            <Property name="toolTipText" type="java.lang.String" value="Input Initials"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="initialsJTextFieldActionPerformed"/>
@@ -141,6 +142,7 @@
               <Font name="Tw Cen MT" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Save!"/>
+            <Property name="toolTipText" type="java.lang.String" value="Saves the Highscore"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
@@ -174,6 +176,7 @@
               <Font name="Tw Cen MT" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Main Menu"/>
+            <Property name="toolTipText" type="java.lang.String" value="Return to Main Menu"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainMenuButtonActionPerformed"/>

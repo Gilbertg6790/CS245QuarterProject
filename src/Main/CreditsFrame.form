@@ -54,6 +54,7 @@
           <ComponentRef name="creditText"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Credits"/>
+        <Property name="toolTipText" type="java.lang.String" value="Credit Title"/>
         <Property name="verticalAlignment" type="int" value="3"/>
       </Properties>
       <Constraints>
@@ -116,6 +117,7 @@
     <Component class="javax.swing.JButton" name="backButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
+        <Property name="toolTipText" type="java.lang.String" value="Back Button"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>

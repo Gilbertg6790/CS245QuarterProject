@@ -70,6 +70,7 @@ public class CreditsFrame extends javax.swing.JFrame {
         creditText.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         creditText.setLabelFor(creditText);
         creditText.setText("Credits");
+        creditText.setToolTipText("Credit Title");
         creditText.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(creditText);
         creditText.setBounds(250, 75, 102, 40);
@@ -102,6 +103,7 @@ public class CreditsFrame extends javax.swing.JFrame {
         name4.setBounds(270, 170, 100, 16);
 
         backButton.setText("Back");
+        backButton.setToolTipText("Back Button");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);

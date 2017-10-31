@@ -96,6 +96,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
         creditsButton.setFont(new java.awt.Font("Tw Cen MT", 0, 11)); // NOI18N
         creditsButton.setText("Credits");
+        creditsButton.setToolTipText("i made dis.");
         creditsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 creditsButtonActionPerformed(evt);
@@ -106,6 +107,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
         playButton.setFont(new java.awt.Font("Tw Cen MT", 1, 11)); // NOI18N
         playButton.setText("Play !");
+        playButton.setToolTipText("Start the Game!");
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playButtonActionPerformed(evt);
@@ -116,6 +118,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
         highscoreButton.setFont(new java.awt.Font("Tw Cen MT", 0, 11)); // NOI18N
         highscoreButton.setText("HighScores");
+        highscoreButton.setToolTipText("Some of the best...");
         highscoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 highscoreButtonActionPerformed(evt);

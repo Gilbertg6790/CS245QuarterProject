@@ -65,6 +65,7 @@ public class TeamInfoFrame extends javax.swing.JFrame {
 
         creditText.setFont(new java.awt.Font("Tw Cen MT", 0, 36)); // NOI18N
         creditText.setText("Swing Project, Fall 2017");
+        creditText.setToolTipText("TeamInfo Title");
         creditText.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         getContentPane().add(creditText, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 75, -1, -1));
 

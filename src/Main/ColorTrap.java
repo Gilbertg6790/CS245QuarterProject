@@ -392,9 +392,7 @@ public final class ColorTrap extends javax.swing.JFrame {
         colorLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 400));
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -405,6 +403,7 @@ public final class ColorTrap extends javax.swing.JFrame {
 
         purpleButton.setForeground(new java.awt.Color(255, 255, 255));
         purpleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/purpleUnpressed.png"))); // NOI18N
+        purpleButton.setToolTipText("Purple Button");
         purpleButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         purpleButton.setBorderPainted(false);
         purpleButton.setContentAreaFilled(false);
@@ -424,6 +423,7 @@ public final class ColorTrap extends javax.swing.JFrame {
 
         redButton.setForeground(new java.awt.Color(255, 255, 255));
         redButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/redButtonUnpressed.png"))); // NOI18N
+        redButton.setToolTipText("Red Button");
         redButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         redButton.setBorderPainted(false);
         redButton.setContentAreaFilled(false);
@@ -443,6 +443,7 @@ public final class ColorTrap extends javax.swing.JFrame {
 
         greenButton.setForeground(new java.awt.Color(255, 255, 255));
         greenButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/greenUnpressed.png"))); // NOI18N
+        greenButton.setToolTipText("Green Button");
         greenButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         greenButton.setBorderPainted(false);
         greenButton.setContentAreaFilled(false);
@@ -462,6 +463,7 @@ public final class ColorTrap extends javax.swing.JFrame {
 
         blueButton.setForeground(new java.awt.Color(255, 255, 255));
         blueButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/blueUnpressed.png"))); // NOI18N
+        blueButton.setToolTipText("Blue Button");
         blueButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         blueButton.setBorderPainted(false);
         blueButton.setContentAreaFilled(false);
@@ -481,6 +483,7 @@ public final class ColorTrap extends javax.swing.JFrame {
 
         yellowButton.setForeground(new java.awt.Color(255, 255, 255));
         yellowButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/yellowButtonUnpressed.png"))); // NOI18N
+        yellowButton.setToolTipText("Orange Button");
         yellowButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         yellowButton.setBorderPainted(false);
         yellowButton.setContentAreaFilled(false);
@@ -536,12 +539,14 @@ public final class ColorTrap extends javax.swing.JFrame {
         datePlaceHolder.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
         datePlaceHolder.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         datePlaceHolder.setText("DATEPLACEHOLDER");
+        datePlaceHolder.setToolTipText("Date");
         getContentPane().add(datePlaceHolder);
         datePlaceHolder.setBounds(410, 0, 100, 14);
 
         timePlaceHolder.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
         timePlaceHolder.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         timePlaceHolder.setText("TIMEPLACEHOLDER");
+        timePlaceHolder.setToolTipText("Time");
         getContentPane().add(timePlaceHolder);
         timePlaceHolder.setBounds(520, 0, 70, 14);
 
@@ -552,12 +557,14 @@ public final class ColorTrap extends javax.swing.JFrame {
 
         scorePlaceHolderLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
         scorePlaceHolderLabel.setText("scorePlaceHolder");
+        scorePlaceHolderLabel.setToolTipText("Score");
         getContentPane().add(scorePlaceHolderLabel);
         scorePlaceHolderLabel.setBounds(60, 20, 70, 14);
 
         colorLabel.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         colorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         colorLabel.setText("COLOR");
+        colorLabel.setToolTipText("Color Frame Title");
         getContentPane().add(colorLabel);
         colorLabel.setBounds(180, 0, 250, 40);
 

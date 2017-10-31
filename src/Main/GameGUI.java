@@ -299,20 +299,24 @@ public class GameGUI extends javax.swing.JFrame {
 
         namePlaceHolder.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         namePlaceHolder.setText("HANGMAN");
+        namePlaceHolder.setToolTipText("Hangman Title");
         gamePanel.add(namePlaceHolder);
         namePlaceHolder.setBounds(2, 2, 70, 16);
 
         datePlaceHolder.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         datePlaceHolder.setText("DATEPLACEHOLDER");
+        datePlaceHolder.setToolTipText("Date");
         gamePanel.add(datePlaceHolder);
         datePlaceHolder.setBounds(400, 0, 100, 14);
 
         timePlaceHolder.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         timePlaceHolder.setText("TIMEPLACEHOLDER");
+        timePlaceHolder.setToolTipText("Time");
         gamePanel.add(timePlaceHolder);
         timePlaceHolder.setBounds(510, 0, 70, 14);
 
         hangPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        hangPanel.setToolTipText("Hangman Panel");
 
         guessesLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         guessesLabel.setText("Guesses Left  :");
@@ -320,6 +324,7 @@ public class GameGUI extends javax.swing.JFrame {
         guessesNumLabel.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         guessesNumLabel.setForeground(new java.awt.Color(255, 0, 0));
         guessesNumLabel.setText("6");
+        guessesNumLabel.setToolTipText("Guesses remaining");
 
         ScoreNameLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         ScoreNameLabel.setText("Score:");
@@ -327,8 +332,10 @@ public class GameGUI extends javax.swing.JFrame {
         scoreNumLabel.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
         scoreNumLabel.setForeground(new java.awt.Color(0, 153, 0));
         scoreNumLabel.setText("100");
+        scoreNumLabel.setToolTipText("Score");
 
         skipButton.setText("Skip");
+        skipButton.setToolTipText("Skip button");
         skipButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 skipButtonActionPerformed(evt);
@@ -371,6 +378,7 @@ public class GameGUI extends javax.swing.JFrame {
         hangPanel.setBounds(10, 20, 580, 170);
 
         textPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        textPanel.setToolTipText("Hangman Word");
         textPanel.setLayout(null);
         gamePanel.add(textPanel);
         textPanel.setBounds(10, 190, 580, 60);
@@ -379,6 +387,7 @@ public class GameGUI extends javax.swing.JFrame {
         gamePanel.setBounds(0, 0, 600, 260);
 
         letterPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        letterPanel.setToolTipText("Keyboard");
         letterPanel.setLayout(new java.awt.GridLayout(2, 0, -1, 1));
 
         AButton.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
