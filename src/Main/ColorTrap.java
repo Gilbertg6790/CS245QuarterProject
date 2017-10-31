@@ -31,12 +31,12 @@ public final class ColorTrap extends javax.swing.JFrame {
 
     Random rand = new Random();
     ColorTrapEngine CTE = new ColorTrapEngine();
-    private final HighScoreEngine hiScoreRecords = new HighScoreEngine("0", 0);
+    
     int score;
     private String wordColor = null;
     
     public ColorTrap(int x) {
-        hiScoreRecords.loadScoreFromFile();
+        
         setScore(x);
         initComponents();
         showDateAndTime();
@@ -55,6 +55,8 @@ public final class ColorTrap extends javax.swing.JFrame {
     }
     
     
+    
+    
     //Method: resetBoard
     //purpose: this method resets the board to a new states and also
     //checks if the game is finished and is a highscore.
@@ -62,13 +64,7 @@ public final class ColorTrap extends javax.swing.JFrame {
         
         if (CTE.isFinished() == true) {
             dispose();
-            System.out.println(CTE.getScore()+getScore());
-            if (hiScoreRecords.isHighScore(CTE.getScore()+getScore()) == true) { // If score is greater than a score in score.txt
-                new ScoreInput(CTE.getScore()+getScore()).setVisible(true);
-            } 
-            else {
-                new WinnerFrame(CTE.getScore()+getScore()).setVisible(true); // If not then just move to the game overscreen
-            }
+            new SudokuGUI(CTE.getScore() + getScore()).setVisible(true);
         }
         
         //Sets the jlabel for the score at the top to the current running score.

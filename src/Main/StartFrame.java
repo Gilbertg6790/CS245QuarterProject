@@ -86,13 +86,12 @@ public class StartFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) throws IOException {
-        new SudokuGUI().setVisible(true);  
-        //StartFrame Main = new StartFrame();
-        //Main.setVisible(true);
-        //Main.stall();
-        //Main.dispose();
+        StartFrame Main = new StartFrame();
+        Main.setVisible(true);
+        Main.stall();
+        Main.dispose();
         
-        //Main.run();
+        Main.run();
 
     }
     
