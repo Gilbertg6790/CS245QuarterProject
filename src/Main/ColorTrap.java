@@ -414,6 +414,7 @@ public final class ColorTrap extends javax.swing.JFrame {
         purpleButton.setMinimumSize(new java.awt.Dimension(110, 110));
         purpleButton.setPreferredSize(new java.awt.Dimension(110, 110));
         purpleButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/purplePressed.png"))); // NOI18N
+        purpleButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/purplePressed.png"))); // NOI18N
         purpleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 purpleButtonActionPerformed(evt);
@@ -432,6 +433,7 @@ public final class ColorTrap extends javax.swing.JFrame {
         redButton.setMinimumSize(new java.awt.Dimension(110, 110));
         redButton.setPreferredSize(new java.awt.Dimension(110, 110));
         redButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/redButtonPressed.png"))); // NOI18N
+        redButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/redButtonPressed.png"))); // NOI18N
         redButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 redButtonActionPerformed(evt);
@@ -450,6 +452,7 @@ public final class ColorTrap extends javax.swing.JFrame {
         greenButton.setMinimumSize(new java.awt.Dimension(110, 110));
         greenButton.setPreferredSize(new java.awt.Dimension(110, 110));
         greenButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/greenPressed.png"))); // NOI18N
+        greenButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/greenPressed.png"))); // NOI18N
         greenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 greenButtonActionPerformed(evt);
@@ -468,6 +471,7 @@ public final class ColorTrap extends javax.swing.JFrame {
         blueButton.setMinimumSize(new java.awt.Dimension(110, 110));
         blueButton.setPreferredSize(new java.awt.Dimension(110, 110));
         blueButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/bluePressed.png"))); // NOI18N
+        blueButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/bluePressed.png"))); // NOI18N
         blueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 blueButtonActionPerformed(evt);
@@ -486,6 +490,7 @@ public final class ColorTrap extends javax.swing.JFrame {
         yellowButton.setMinimumSize(new java.awt.Dimension(110, 110));
         yellowButton.setPreferredSize(new java.awt.Dimension(110, 110));
         yellowButton.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/yellowButtonPressed.png"))); // NOI18N
+        yellowButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/yellowButtonPressed.png"))); // NOI18N
         yellowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 yellowButtonActionPerformed(evt);
