@@ -37,25 +37,23 @@ public final class ColorTrap extends javax.swing.JFrame {
     
     public ColorTrap(int x) {
         
-        setScore(x);
         initComponents();
+        setScore(x);
         showDateAndTime();
         escapeListener();
         setWord();
         setWordColor();
-        //resetBoard();
     }
     
     public int getScore() {
         return score;
     }
     
-    public void setScore(int score) {
+    public void setScore(int score){
+        String scoreNumber = Integer.toString(score);
+        scorePlaceHolderLabel.setText(scoreNumber);
         this.score = score;
     }
-    
-    
-    
     
     //Method: resetBoard
     //purpose: this method resets the board to a new states and also
@@ -70,7 +68,6 @@ public final class ColorTrap extends javax.swing.JFrame {
         //Sets the jlabel for the score at the top to the current running score.
         String scoreNumber = Integer.toString(CTE.getScore()+getScore());
         scorePlaceHolderLabel.setText(scoreNumber);
-
         
         setWord();
         setWordColor();
