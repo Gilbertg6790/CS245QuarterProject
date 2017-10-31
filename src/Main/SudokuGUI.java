@@ -24,11 +24,26 @@ import javax.swing.KeyStroke;
 public class SudokuGUI extends javax.swing.JFrame {
 
     SudokuEngine se = new SudokuEngine();
+    private int[][] tempArray = new int[9][9];
+    private int score;
+    private final HighScoreEngine hiScoreRecords = new HighScoreEngine("0", 0);
     
     
     public SudokuGUI() {
+        score = 0;
+        hiScoreRecords.loadScoreFromFile();
+
         escapeListener();
         initComponents();
+        
+    }
+    
+    public SudokuGUI(int prevScore) {
+        score = prevScore;
+        hiScoreRecords.loadScoreFromFile();
+        escapeListener();
+        initComponents();
+        
     }
     
     public final void escapeListener() {
@@ -41,6 +56,7 @@ public class SudokuGUI extends javax.swing.JFrame {
             }
         });
     }
+    
     
     
     @SuppressWarnings("unchecked")
@@ -151,11 +167,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r9_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r9_1.setText("3");
-        r9_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_1ActionPerformed(evt);
-            }
-        });
         r9_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_1KeyTyped(evt);
@@ -163,11 +174,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r7_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r7_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_1ActionPerformed(evt);
-            }
-        });
         r7_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_1KeyTyped(evt);
@@ -175,11 +181,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_2ActionPerformed(evt);
-            }
-        });
         r8_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_2KeyTyped(evt);
@@ -188,11 +189,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r7_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r7_3.setText("2");
-        r7_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_3ActionPerformed(evt);
-            }
-        });
         r7_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_3KeyTyped(evt);
@@ -200,11 +196,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r9_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r9_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_3ActionPerformed(evt);
-            }
-        });
         r9_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_3KeyTyped(evt);
@@ -213,11 +204,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r7_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r7_2.setText("5");
-        r7_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_2ActionPerformed(evt);
-            }
-        });
         r7_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_2KeyTyped(evt);
@@ -226,11 +212,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r8_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r8_3.setText("1");
-        r8_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_3ActionPerformed(evt);
-            }
-        });
         r8_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_3KeyTyped(evt);
@@ -238,11 +219,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_1ActionPerformed(evt);
-            }
-        });
         r8_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_1KeyTyped(evt);
@@ -250,11 +226,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r9_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r9_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_2ActionPerformed(evt);
-            }
-        });
         r9_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_2KeyTyped(evt);
@@ -311,11 +282,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(120, 120));
 
         r5_8.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_8ActionPerformed(evt);
-            }
-        });
         r5_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_8KeyTyped(evt);
@@ -323,11 +289,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r6_8.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r6_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_8ActionPerformed(evt);
-            }
-        });
         r6_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_8KeyTyped(evt);
@@ -336,11 +297,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r4_8.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r4_8.setText("8");
-        r4_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_8ActionPerformed(evt);
-            }
-        });
         r4_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_8KeyTyped(evt);
@@ -348,11 +304,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r5_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_9ActionPerformed(evt);
-            }
-        });
         r5_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_9KeyTyped(evt);
@@ -360,11 +311,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r5_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_7ActionPerformed(evt);
-            }
-        });
         r5_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_7KeyTyped(evt);
@@ -373,11 +319,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r6_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r6_9.setText("3");
-        r6_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_9ActionPerformed(evt);
-            }
-        });
         r6_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_9KeyTyped(evt);
@@ -386,11 +327,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r4_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r4_7.setText("7");
-        r4_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_7ActionPerformed(evt);
-            }
-        });
         r4_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_7KeyTyped(evt);
@@ -399,11 +335,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r6_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r6_7.setText("1");
-        r6_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_7ActionPerformed(evt);
-            }
-        });
         r6_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_7KeyTyped(evt);
@@ -411,11 +342,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r4_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r4_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_9ActionPerformed(evt);
-            }
-        });
         r4_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_9KeyTyped(evt);
@@ -472,11 +398,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(120, 120));
 
         r7_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r7_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_9ActionPerformed(evt);
-            }
-        });
         r7_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_9KeyTyped(evt);
@@ -485,11 +406,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r7_8.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r7_8.setText("9");
-        r7_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_8ActionPerformed(evt);
-            }
-        });
         r7_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_8KeyTyped(evt);
@@ -498,11 +414,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r9_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r9_9.setText("5");
-        r9_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_9ActionPerformed(evt);
-            }
-        });
         r9_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_9KeyTyped(evt);
@@ -510,11 +421,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r9_8.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r9_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_8ActionPerformed(evt);
-            }
-        });
         r9_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_8KeyTyped(evt);
@@ -522,11 +428,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_7ActionPerformed(evt);
-            }
-        });
         r8_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_7KeyTyped(evt);
@@ -534,11 +435,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_9ActionPerformed(evt);
-            }
-        });
         r8_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_9KeyTyped(evt);
@@ -546,11 +442,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r9_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r9_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_7ActionPerformed(evt);
-            }
-        });
         r9_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_7KeyTyped(evt);
@@ -558,11 +449,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r7_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r7_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_7ActionPerformed(evt);
-            }
-        });
         r7_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_7KeyTyped(evt);
@@ -570,11 +456,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_8.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_8ActionPerformed(evt);
-            }
-        });
         r8_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_8KeyTyped(evt);
@@ -632,11 +513,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r6_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r6_3.setText("8");
-        r6_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_3ActionPerformed(evt);
-            }
-        });
         r6_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_3KeyTyped(evt);
@@ -645,11 +521,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r4_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r4_1.setText("5");
-        r4_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_1ActionPerformed(evt);
-            }
-        });
         r4_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_1KeyTyped(evt);
@@ -657,11 +528,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r4_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r4_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_2ActionPerformed(evt);
-            }
-        });
         r4_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_2KeyTyped(evt);
@@ -670,11 +536,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r4_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r4_3.setText("9");
-        r4_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_3ActionPerformed(evt);
-            }
-        });
         r4_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_3KeyTyped(evt);
@@ -682,11 +543,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r5_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_1ActionPerformed(evt);
-            }
-        });
         r5_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_1KeyTyped(evt);
@@ -694,11 +550,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r5_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_2ActionPerformed(evt);
-            }
-        });
         r5_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_2KeyTyped(evt);
@@ -706,11 +557,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r5_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_3ActionPerformed(evt);
-            }
-        });
         r5_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_3KeyTyped(evt);
@@ -718,11 +564,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r6_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r6_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_1ActionPerformed(evt);
-            }
-        });
         r6_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_1KeyTyped(evt);
@@ -731,11 +572,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r6_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r6_2.setText("4");
-        r6_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_2ActionPerformed(evt);
-            }
-        });
         r6_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_2KeyTyped(evt);
@@ -792,11 +628,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         jPanel5.setPreferredSize(new java.awt.Dimension(120, 120));
 
         r3_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r3_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_6ActionPerformed(evt);
-            }
-        });
         r3_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_6KeyTyped(evt);
@@ -804,11 +635,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r2_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r2_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2_4ActionPerformed(evt);
-            }
-        });
         r2_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r2_4KeyTyped(evt);
@@ -823,11 +649,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r3_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r3_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_4ActionPerformed(evt);
-            }
-        });
         r3_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_4KeyTyped(evt);
@@ -835,11 +656,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r2_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r2_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2_6ActionPerformed(evt);
-            }
-        });
         r2_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r2_6KeyTyped(evt);
@@ -847,11 +663,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r2_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r2_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2_5ActionPerformed(evt);
-            }
-        });
         r2_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r2_5KeyTyped(evt);
@@ -860,11 +671,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r1_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r1_4.setText("4");
-        r1_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r1_4ActionPerformed(evt);
-            }
-        });
         r1_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r1_4KeyTyped(evt);
@@ -872,11 +678,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r3_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r3_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_5ActionPerformed(evt);
-            }
-        });
         r3_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_5KeyTyped(evt);
@@ -941,11 +742,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         jPanel6.setPreferredSize(new java.awt.Dimension(120, 120));
 
         r7_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r7_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_5ActionPerformed(evt);
-            }
-        });
         r7_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_5KeyTyped(evt);
@@ -953,11 +749,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_5ActionPerformed(evt);
-            }
-        });
         r8_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_5KeyTyped(evt);
@@ -965,11 +756,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_4ActionPerformed(evt);
-            }
-        });
         r8_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_4KeyTyped(evt);
@@ -977,11 +763,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r7_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r7_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_4ActionPerformed(evt);
-            }
-        });
         r7_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_4KeyTyped(evt);
@@ -989,11 +770,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r7_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r7_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r7_6ActionPerformed(evt);
-            }
-        });
         r7_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r7_6KeyTyped(evt);
@@ -1002,11 +778,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r9_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r9_4.setText("9");
-        r9_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_4ActionPerformed(evt);
-            }
-        });
         r9_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_4KeyTyped(evt);
@@ -1014,11 +785,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r9_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r9_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_5ActionPerformed(evt);
-            }
-        });
         r9_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_5KeyTyped(evt);
@@ -1027,11 +793,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r9_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r9_6.setText("2");
-        r9_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r9_6ActionPerformed(evt);
-            }
-        });
         r9_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r9_6KeyTyped(evt);
@@ -1039,11 +800,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r8_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r8_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r8_6ActionPerformed(evt);
-            }
-        });
         r8_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r8_6KeyTyped(evt);
@@ -1100,11 +856,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         jPanel7.setPreferredSize(new java.awt.Dimension(120, 120));
 
         r3_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r3_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_1ActionPerformed(evt);
-            }
-        });
         r3_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_1KeyTyped(evt);
@@ -1112,26 +863,13 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r1_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r1_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r1_2ActionPerformed(evt);
-            }
-        });
         r1_2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                r1_2KeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r1_2KeyTyped(evt);
             }
         });
 
         r2_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r2_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2_1ActionPerformed(evt);
-            }
-        });
         r2_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r2_1KeyTyped(evt);
@@ -1140,11 +878,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r1_1.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r1_1.setText("8");
-        r1_1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r1_1ActionPerformed(evt);
-            }
-        });
         r1_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r1_1KeyTyped(evt);
@@ -1160,11 +893,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r3_2.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r3_2.setText("1");
-        r3_2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_2ActionPerformed(evt);
-            }
-        });
         r3_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_2KeyTyped(evt);
@@ -1172,11 +900,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r3_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r3_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_3ActionPerformed(evt);
-            }
-        });
         r3_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_3KeyTyped(evt);
@@ -1184,11 +907,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r2_3.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r2_3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2_3ActionPerformed(evt);
-            }
-        });
         r2_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r2_3KeyTyped(evt);
@@ -1253,11 +971,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r4_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r4_5.setText("3");
-        r4_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_5ActionPerformed(evt);
-            }
-        });
         r4_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_5KeyTyped(evt);
@@ -1266,11 +979,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r5_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r5_5.setText("7");
-        r5_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_5ActionPerformed(evt);
-            }
-        });
         r5_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_5KeyTyped(evt);
@@ -1278,11 +986,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r5_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_4ActionPerformed(evt);
-            }
-        });
         r5_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_4KeyTyped(evt);
@@ -1290,11 +993,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r4_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r4_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_6ActionPerformed(evt);
-            }
-        });
         r4_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_6KeyTyped(evt);
@@ -1302,11 +1000,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r5_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r5_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r5_6ActionPerformed(evt);
-            }
-        });
         r5_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r5_6KeyTyped(evt);
@@ -1314,11 +1007,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r6_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r6_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_4ActionPerformed(evt);
-            }
-        });
         r6_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_4KeyTyped(evt);
@@ -1326,11 +1014,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r6_6.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r6_6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_6ActionPerformed(evt);
-            }
-        });
         r6_6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_6KeyTyped(evt);
@@ -1338,11 +1021,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r4_4.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r4_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r4_4ActionPerformed(evt);
-            }
-        });
         r4_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r4_4KeyTyped(evt);
@@ -1351,11 +1029,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r6_5.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r6_5.setText("2");
-        r6_5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r6_5ActionPerformed(evt);
-            }
-        });
         r6_5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r6_5KeyTyped(evt);
@@ -1427,11 +1100,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r1_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r1_9.setText("7");
-        r1_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r1_9ActionPerformed(evt);
-            }
-        });
         r1_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r1_9KeyTyped(evt);
@@ -1440,11 +1108,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r3_8.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r3_8.setText("5");
-        r3_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_8ActionPerformed(evt);
-            }
-        });
         r3_8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_8KeyTyped(evt);
@@ -1452,11 +1115,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r2_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r2_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2_9ActionPerformed(evt);
-            }
-        });
         r2_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r2_9KeyTyped(evt);
@@ -1464,11 +1122,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r1_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r1_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r1_7ActionPerformed(evt);
-            }
-        });
         r1_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r1_7KeyTyped(evt);
@@ -1477,11 +1130,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r3_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r3_7.setText("6");
-        r3_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_7ActionPerformed(evt);
-            }
-        });
         r3_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_7KeyTyped(evt);
@@ -1489,11 +1137,6 @@ public class SudokuGUI extends javax.swing.JFrame {
         });
 
         r3_9.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
-        r3_9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r3_9ActionPerformed(evt);
-            }
-        });
         r3_9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r3_9KeyTyped(evt);
@@ -1502,11 +1145,6 @@ public class SudokuGUI extends javax.swing.JFrame {
 
         r2_7.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         r2_7.setText("4");
-        r2_7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                r2_7ActionPerformed(evt);
-            }
-        });
         r2_7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 r2_7KeyTyped(evt);
@@ -1582,300 +1220,10 @@ public class SudokuGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>                        
-
-    private void r6_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
+    
+    private void parseInput()
+    {
         
-    }                                    
-
-    private void r4_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r6_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r2_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r2_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r3_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r2_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r2_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r2_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r2_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r1_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-
-    }                                    
-
-    private void r1_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r1_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-
-
-    }                                    
-
-    private void r6_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r6_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r6_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r6_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r4_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r5_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r6_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r6_8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_1ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_3ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_6ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_4ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r7_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r8_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_7ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r9_8ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) 
-    {                                               
-        System.exit(0);
-    }
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) 
-    {           
-        
-        int[][] tempArray = new int[9][9];
         
         //row 1
         try{
@@ -2398,37 +1746,54 @@ public class SudokuGUI extends javax.swing.JFrame {
         {
             tempArray[8][8] = 0;
         }
+    }
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+    { 
+        parseInput();
         
         for (int a = 0; a < 9; a++)
         {
             for (int b = 0; b < 9; b++)
             {
-                se.checkAnswer(tempArray[a][b],a,b);
+              se.checkAnswer(tempArray[a][b],a,b);
+       
+            }
+        }
+        
+        dispose();
+        if (hiScoreRecords.isHighScore(se.getScore() + score) == true) { // If score is greater than a score in score.txt
+                new ScoreInput(se.getScore()+score).setVisible(true);
+            } 
+            else {
+                new WinnerFrame(se.getScore()+score).setVisible(true); // If not then just move to the game overscreen
+            }
+    }
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) 
+    {           
+        parseInput();
+        boolean correct = true;
+        for (int a = 0; a < 9; a++)
+        {
+            for (int b = 0; b < 9; b++)
+            {
+                if (!se.checkAnswer(tempArray[a][b],a,b))
+                {
+                    correct = false;
+                }
                 
             }
         }
-        System.out.print(se.getScore());
-    }  
-
-    private void r1_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
+        if (!correct)
+        {
+            JOptionPane.showMessageDialog(null, "Sudoku is Incorrect, Try Again");
+        }
+        else
+        {
+            dispose();
+            new WinnerFrame(se.getScore()+ score).setVisible(true);
+        }
     }                                    
-
-    private void r6_2ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r1_9ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        // TODO add your handling code here:
-    }                                    
-
-    private void r2_5ActionPerformed(java.awt.event.ActionEvent evt) {                                     
-        
-    }                                    
-
-    private void r1_2KeyPressed(java.awt.event.KeyEvent evt) {                                
-        // TODO add your handling code here:
-    }                               
 
     private void r1_2KeyTyped(java.awt.event.KeyEvent evt) {                              
         if(Character.isLetter(evt.getKeyChar())) {
